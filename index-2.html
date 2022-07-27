@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- bootstrap引入 -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css.map">
+    <link rel="stylesheet" type="text/css" href="font/css/all.min.css" />
+    <script src="js/jquery-3.5.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <title>MyFl-Supercar</title>
+    <!-- 图标引入 -->
+    <link rel="icon" type="images/x-ico" href="images/title-ico.ico" />
+    <!-- elementUi -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 公共样式 -->
+    <link rel="stylesheet" href="css/pulic.css">
+    <!-- 外链主页样式 -->
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
+    <style>
+     html,
+body {
+    width: 100%;
+    height: 100%;
+    /* background-image: url("images/sc\ \(15\).jpg"); */
+    background-image: url("images/sc\ \(27\).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+.navbar-nav li,
+.list-unstyled a {
+    color:#ffffff;
+}
+
+.navbar-nav a:hover {
+    color: rgb(255, 0, 0);
+}
+.menu-1{
+    background-color: rgba(255, 255, 255,.7);
+}
+        /*给图片添加阴影*/
+        
+        .item_div img {
+            transition: all .9s;
+        }
+        
+        .item_div img:hover {
+            /*元素阴影: x偏移值 y偏移值 浓度 范围 颜色*/
+            box-shadow: 0 0 15px rgb(163, 163, 163);
+            transform: scale(1.1);
+        }
+        /*去掉多余的拖动条*/
+        
+        .el-main {
+            overflow: hidden;
+        }
+        .banner img{
+            margin-top: 20px;
+            width: 100%;
+            height: 722px;
+        }
+        .el-table{
+            width: 100%;
+            height: 600px;
+        }
+.el-divider__text{
+    background-color:rgba(255, 255, 255,.2);
+}
+.text-con{
+    font-size: 3em;
+}
+    @media screen and (max-width:992px) {
+        .banner img {
+        width: 100%;
+        height: 400px;
+        position: relative;
+    }
+    .banner,
+    .el-carousel--vertical {
+        height: 420px;
+    }
+    .el-carousel__container,
+    .el-carousel-item,
+    #app {
+        height: 420px;
+    }
+    .el-carousel__indicators {
+        position: absolute;
+        top: 50%;
+        right: 0%;
+    }
+        .el-table{
+            width: 100%;
+            height: 300px;
+        }
+        .el-card_body{
+            width: 100%;
+            height: 300px;
+        }
+    }
+    
+    @media screen and (max-width:576px) {
+    .banner img {
+        width: 100%;
+        height: 400px;
+        position: relative;
+    }
+    .el-table{
+            width: 100%;
+            height: 300px;
+        }
+    .banner,
+    .el-carousel--vertical {
+        height: 420px;
+    }
+    .el-carousel__container,
+    .el-carousel-item,
+    #app {
+        height: 420px;
+    }
+    .el-carousel__indicators {
+        position: absolute;
+        top: 50%;
+        right: 0%;
+    }
+    .in-text h1 {
+        font-size: 25px;
+    }
+    .in-text h4 {
+        font-size: 18px;
+    }
+    .in-text p {
+        font-size: 14px;
+    }
+    .tx-1 p {
+        font-size: 18px;
+    }
+    .text-con{ font-size: 40px; }
+}
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+            <!-- 导航 -->
+            <el-header>
+                <div class="nav mt-n2">
+                    <nav id="topNav" class="navbar navbar-expand-lg fixed-top " :style='topNavBg'>
+                        <li class="nav-item logo1">
+                            <a href="index.html" class=" navbar-brand">
+                                <img src="images/sea-logo.png" class="logo1" alt="logo">
+                            </a>
+                        </li>
+                        <button class="navbar-toggler justify-content-end " type="button" data-toggle="collapse" data-target="#collapsibleNavbar1">
+                        <i class="fa fa-bars"></i>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar1" :style="topNavFt">
+
+                            <ul class="navbar-nav">
+                                <ul class="list-unstyled ps-0 justify-content-end">
+                                    <button class="btn align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse1" aria-expanded="false">
+                                    </button><a href="login.html" target="_blank" class="nav-link" id="navbardrop">登录/注册</a>
+                                </ul>
+                                <ul class="list-unstyled ps-0">
+                                    <button class="btn  align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse4" aria-expanded="false">
+                                  </button><a href="index.html" class="nav-link" id="navbardrop">首页</a>
+                                </ul>
+                                <ul class="list-unstyled ps-0">
+                                    <button class="btn  align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse5" aria-expanded="false">
+                                    </button><a href="留言板.html" class="nav-link" id="navbardrop">给我们留言</a>
+                                </ul>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </el-header>
+
+            <!-- 二级菜单 -->
+                <div style="width: 100%; height: 50px; " class="mt-4 d-none d-sm-block">
+                    <el-menu style="width: 100%; margin: 0 auto;" class="el-menu-demo menu-1" mode="horizontal">
+                        <el-menu-item class="menu-item-1" @click="open" v-for="link in categoryArr">{{link}}</el-menu-item>
+                        <el-menu-item style="float: right" class="d-none d-md-block" index="1">
+                            <el-input class="" placeholder="请输入内容" v-model="wd" class="input-with-select">
+                                <el-button slot="append" icon="el-icon-search"></el-button>                        
+                            </el-menu-item>
+                    </el-menu>
+                </div>
+            <!-- 内容 -->
+            <el-main style="width: 100%; margin-top:5px;">
+                <el-row :gutter="24" class="">
+                    <!-- 轮播 -->
+                    <el-col :span="18" :xs="24" :sm="24" :md="18" :lg="18" :xl="18">
+                        <div class="banner">
+                            <templat>
+                                <el-carousel height="100vh" :interval="4000" direction="vertical" :autoplay="true">
+                                    <el-carousel-item v-for="(item,index) in banner" :key="item">
+                                        <img class="img-fluid rounded" :src="banner[index]" alt="">
+                                    </el-carousel-item>
+                                </el-carousel>
+                            </templat>
+                        </div>
+                    </el-col>
+                    <!-- 侧边 -->
+                    <el-col class="mt-3" :span="6" :xs="24" :sm="24" :md="6" :lg="6" :xl="6">
+                        <el-card style="background-color:rgba(255, 255, 255, 0.1)">
+                          <h3>
+                            <i style="font-weight: bold" class="el-icon-trophy"></i
+                            >人气Top
+                          </h3>
+                          <el-divider></el-divider>
+                          <!--销量排行-->
+                          <el-table :data="topArr" style="border-radius: 20px;">
+                            <!--type="index" 列的内容为序号-->
+                            <el-table-column type="index" width="50px" label="排名">
+                            </el-table-column>
+                            <el-table-column prop="title" label="商品名">
+                            </el-table-column>
+                            <el-table-column prop="saleCount" label="销量">
+                            </el-table-column>
+                          </el-table>
+                          <!--销量排-->
+                        </el-card>
+                      </el-col>
+                    <!--  -->
+                </el-row>
+
+                <!-- 标题 -->
+                <h1 class="text-center text-white text-con" style="font-weight:900;">Supercar</h1>
+                <el-divider></el-divider>
+
+
+                <!-- 商品列表 -->
+                <el-row :gutter="24">
+                    <el-col :span="6" :xs="24" :sm="12" :md="8" :lg="6" :xl="6" v-for="p in productArr" style="margin: 10px 0">
+                        <el-card :body-style="{ padding: '0px' }"  style="background-color:rgba(255,255,255,.8); color: black;">
+                            <div class="item_div" style="padding: 20px 20px 0 20px" @click="detail()">
+                                <img :src="p.url" class="rounded" width="100%" height="240" class="image" />
+                            </div>
+                            <div style="padding: 14px">
+                                <p style="margin-top: 0; font-size: 15px; height: 38px">
+                                    {{p.title}}
+                                </p>
+                                <div class="bottom clearfix" style="color: #6c6c6c">
+                                    <span>￥{{p.price}}
+                                 <small style="text-decoration: line-through">￥{{p.oldPrice}}</small></span>
+                                    <span style="float: right;">销量：{{p.saleCount}}台</span>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+                  </el-row>
+                  <div class="row mx-auto mb-2 text-center text-white">
+                    <p class="col-12 mt-3 mx-auto">您是否有疑问或者想了解更多信息？<br>我们随时都很乐意解答您的一切疑问。</p>
+                    <a href="https://www.mclarencars.cn/cn-zh/about" class=" mx-auto  text-white">查看更多</a>
+                </div>
+                <!--商品列表结束-->
+            </el-main>
+        </el-container>
+        <!-- 脚注 -->
+    <div class="footer mt-2 pt-3 pb-3  text-white" style="font-size: 15px;">
+        <div class="row mx-auto">
+            <p class="col-12 col-sm-12 col-md-12 col-lg-6 my-auto mx-auto text-center">此网站仅用于学习，以上内容均为网络素材，如有侵权请联系删除</p>
+            <p class="col-12 col-sm-12 col-md-12 col-lg-6 my-auto mx-auto text-center">
+                <span><a href="">邮箱: 2996072582@qq.com</a></span>
+            </p>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    wd: "",
+                    topNavBg: {
+                            backgroundColor: '',
+                        },
+                        input: '',
+                        topNavFt: {
+                            color: '',
+                        },
+                    banner: ["images/sc (32).jpg", "images/sc (33).jpg", "images/sc (26).jpg", "images/sc (30).jpg", "images/sc (7).jpg", "images/sc (31).jpg"],
+                    topArr: [{
+                        title: "Apollo",
+                        saleCount: 10
+                    }, {
+                        title: "柯尼塞格",
+                        saleCount: 20
+                    }, {
+                        title: "帕加尼",
+                        saleCount: 30
+                    }, {
+                        title: "兰博基尼",
+                        saleCount: 52
+                    }, {
+                        title: "布加迪威龙",
+                        saleCount: 40
+                    },{
+                        title: "法拉利",
+                        saleCount: 43
+                    }, {
+                        title: "保时捷",
+                        saleCount: 47
+                    }, {
+                        title: "梅赛德斯",
+                        saleCount: 123
+                    }, {
+                        title: "BMW",
+                        saleCount: 233
+                    }, {
+                        title: "福特",
+                        saleCount: 33
+                    },],
+                    productArr: [{
+                        title: "Mclaren 720 ",
+                        url: "images/mkl.png",
+                        price: "378.90万",
+                        oldPrice: "405.00万",
+                        saleCount: "2"
+                    }, {
+                        title: "BMW",
+                        url: "images/sc (25).jpg",
+                        price: "——",
+                        oldPrice: "-",
+                        saleCount: "-"
+                    }, {
+                        title: "Mclaren",
+                        url: "images/sc (29).jpg",
+                        price: "——",
+                        oldPrice: "—",
+                        saleCount: "-"
+                    }, {
+                        title: "Mclaren",
+                        url: "images/sc (31).jpg",
+                        price: "——",
+                        oldPrice: "—",
+                        saleCount: "-"
+                    }, {
+                        title: "Mclaren",
+                        url: "images/sc (32).jpg",
+                        price: "——",
+                        oldPrice: "—",
+                        saleCount: "-"
+                    }, {
+                        title: "Mclaren",
+                        url: "images/sc (33).jpg",
+                        price: "——",
+                        oldPrice: "—",
+                        saleCount: "-"
+                    }, {
+                        title: "Mclaren",
+                        url: "images/sc (24).jpg",
+                        price: "——",
+                        oldPrice: "—",
+                        saleCount: "-"
+                    }, {
+                        title: "Mclaren",
+                        url: "images/sc (16).jpg",
+                        price: "——",
+                        oldPrice: "—",
+                        saleCount: "-"
+                    }],
+                    categoryArr: ["Maritime Dynasty", "rapidly", "Dark night"],
+                };
+                
+            },
+            mounted() {
+                    window.addEventListener('scroll', this.handleScroll)
+                },
+
+                destroyed() {
+                    window.removeEventListener('scroll', this.scrollToTop)
+                },
+            methods: {
+                detail: function() {
+                    location.href = "detail.html"
+                },
+                 // 滚动页面时触发导航变色
+                 handleScroll() {
+                        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+                            // 设置背景颜色的透明度
+                        if (scrollTop) {
+                            this.topNavBg.backgroundColor = `rgba(0, 0, 0, 0.5)
+	        	            ${scrollTop / (scrollTop + 60)})`; // scrollTop + 多少根据自己的需求设置
+                            this.topNavFt.color = `#000
+							${scrollTop / (scrollTop + 60)})`;
+                        } else if (scrollTop === 0) {
+                            this.topNavBg.backgroundColor = 'rgba(255, 255, 255, 0.2)'; // 设置回到顶部时，背景颜色为透明
+                        }
+                    },
+                // 滚动之前重置
+                beforeDestroy() {
+                    window.removeEventListener('scroll', this.handleScroll)
+                },
+
+                open() {
+        this.$confirm('未满十八无法进入！', '你是否已满十八岁？', {
+          distinguishCancelAndClose: true,
+          confirmButtonText: '已满',
+          cancelButtonText: '未满'
+        })
+          .then(() => {
+            this.$message({
+              type: 'success',
+              message: '恭喜你！！! ！！!已满十八，没有奖励！'
+            });
+          })
+          .catch(action => {
+            this.$message({
+              type: 'error',
+              message: action === 'cancel'
+                ? '未满十八！嘎嘎惩罚！！！'
+                : '你未选择！！！'
+            })
+          });
+      }
+            },
+        });
+    </script>
+</body>
+
+</html>

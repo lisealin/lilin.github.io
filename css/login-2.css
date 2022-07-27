@@ -1,0 +1,103 @@
+body {
+    background-image: url("images/Android-bg3.jpg");
+    background-size: 100%;
+    opacity: 0.9;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.box input,
+.el-button {
+    margin: 10px;
+    font-weight: 900;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    width: 120px;
+    height: 40px;
+    outline: none;
+    box-shadow: 1px 3px 5px rgb(20, 12, 12);
+    transition: all 1s;
+}
+
+.box button:hover {
+    width: 160px;
+    /* transform: scale(1.1); */
+}
+
+.el-input {
+    width: 90%;
+    transition: all 1s;
+}
+
+.el-input:hover {
+    width: 100%;
+}
+/* .box input:hover {
+    width: 160px;
+} */
+
+.box input:nth-child(1) {
+    text-decoration: line-through rgb(26, 19, 19);
+    /* background-color: rgb(39, 137, 248); */
+    color: white;
+}
+
+.text {
+    font-size: 14px;
+}
+
+.item {
+    margin-bottom: 18px;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both
+}
+
+.box-card {
+    margin: 5% auto;
+    width: 50%;
+    border-radius: 20px;
+}
+
+@media screen and (max-width:556px) {
+    .box-card {
+        /* margin: 20% auto; */
+        width: 100%;
+        height: 100%;
+    }
+    body {
+        background-image: url("images/Android-bg3.jpg");
+        background-size: 100vh;
+        opacity: 0.8;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    .box input,
+    button,
+    .el-button {
+        text-align: center;
+        width: 80px;
+    }
+    /* .box button:hover {
+        width: 90px;
+        transform: scale(1.1);
+    }
+    .box input:hover {
+        width: 90px;
+    } */
+}

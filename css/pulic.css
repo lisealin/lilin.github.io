@@ -1,0 +1,55 @@
+/* 导航列表 */
+.nav{
+    background-color: rgba(255,255,255,0.5);
+}
+.navbar-nav li,
+.list-unstyled a {
+    color:#b91d1d;
+}
+
+.navbar-nav a:hover {
+    color: rgb(255, 0, 0);
+}
+
+/* tu1 */
+
+.tu1 img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    transition: all 1s;
+}
+
+.test3{background:#ffffff; border-radius: 20px;}
+.test3:hover img{opacity:1; border-radius: 50%;
+}
+
+/* 底部*/
+
+.footer {
+    opacity: 0.8;
+    background-color: #505050;
+}
+
+.footer a {
+    color: #ffffff;
+}
+
+
+/* 文字 */
+
+.tx-1,
+.tx-2 p {
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+
+/* 媒体查询*/
+
+@media screen and (max-width:993px) {
+    .nav-link {
+        color: white;
+        font-size: 15px;
+    }
+}

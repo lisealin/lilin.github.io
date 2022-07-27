@@ -1,0 +1,125 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    /* background-image: url("images/sc\ \(15\).jpg"); */
+    background-image: url("images/sc\ \(27\).jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+.navbar-nav li,
+.list-unstyled a {
+    color:#ffffff;
+}
+
+.navbar-nav a:hover {
+    color: rgb(255, 0, 0);
+}
+.menu-1{
+    background-color: rgba(255, 255, 255,.7);
+}
+        /*给图片添加阴影*/
+        
+        .item_div img {
+            transition: all .9s;
+        }
+        
+        .item_div img:hover {
+            /*元素阴影: x偏移值 y偏移值 浓度 范围 颜色*/
+            box-shadow: 0 0 15px rgb(163, 163, 163);
+            transform: scale(1.1);
+        }
+        /*去掉多余的拖动条*/
+        
+        .el-main {
+            overflow: hidden;
+        }
+        .banner img{
+            margin-top: 20px;
+            width: 100%;
+            height: 722px;
+        }
+        .el-table{
+            width: 100%;
+            height: 600px;
+        }
+.el-divider__text{
+    background-color:rgba(255, 255, 255,.2);
+}
+.text-con{
+    font-size: 3em;
+}
+    @media screen and (max-width:992px) {
+        .banner img {
+        width: 100%;
+        height: 400px;
+        position: relative;
+    }
+    .banner,
+    .el-carousel--vertical {
+        height: 420px;
+    }
+    .el-carousel__container,
+    .el-carousel-item,
+    #app {
+        height: 420px;
+    }
+    .el-carousel__indicators {
+        position: absolute;
+        top: 50%;
+        right: 0%;
+    }
+        .el-table{
+            width: 100%;
+            height: 300px;
+        }
+        .el-card_body{
+            width: 100%;
+            height: 300px;
+        }
+    }
+    
+    @media screen and (max-width:576px) {
+    .banner img {
+        width: 100%;
+        height: 400px;
+        position: relative;
+    }
+    .el-table{
+            width: 100%;
+            height: 300px;
+        }
+    .banner,
+    .el-carousel--vertical {
+        height: 420px;
+    }
+    .el-carousel__container,
+    .el-carousel-item,
+    #app {
+        height: 420px;
+    }
+    .el-carousel__indicators {
+        position: absolute;
+        top: 50%;
+        right: 0%;
+    }
+    .in-text h1 {
+        font-size: 25px;
+    }
+    .in-text h4 {
+        font-size: 18px;
+    }
+    .in-text p {
+        font-size: 14px;
+    }
+    .tx-1 p {
+        font-size: 18px;
+    }
+    .text-con{ font-size: 40px; }
+}

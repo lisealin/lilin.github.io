@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyFl登录</title>
+    <!-- 图标引入 -->
+    <link rel="icon" type="images/x-ico" href="images/title-ico.ico" />
+    <!-- elementUi -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 外链login -->
+    <link rel="stylesheet" href="login.html">
+    <style>
+        body {
+            background-image: url("images/Android-bg4.jpg");
+            background-size: 100%;
+            opacity: 0.9;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .box {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin: 0 auto;
+        }
+        
+        .box input,
+        button,
+        .el-button {
+            margin: 10px;
+            font-weight: 900;
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            width: 120px;
+            height: 40px;
+            outline: none;
+            box-shadow: 1px 3px 5px rgb(20, 12, 12);
+            transition: all 1s;
+        }
+        
+        .box button:hover {
+            width: 160px;
+            /* transform: scale(1.1); */
+        }
+        
+        .el-input {
+            width: 90%;
+            transition: all 1s;
+        }
+        
+        .el-input:hover {
+            width: 100%;
+        }
+        /* .box input:hover {
+            width: 160px;
+} */
+        
+        .box input:nth-child(1) {
+            text-decoration: line-through rgb(26, 19, 19);
+            /* background-color: rgb(39, 137, 248); */
+            color: white;
+        }
+        
+        .text {
+            font-size: 14px;
+        }
+        
+        .item {
+            margin-bottom: 18px;
+        }
+        
+        .clearfix:before,
+        .clearfix:after {
+            display: table;
+            content: "";
+        }
+        
+        .clearfix:after {
+            clear: both
+        }
+        
+        .box-card {
+            margin: 5% auto;
+            width: 50%;
+            border-radius: 20px;
+        }
+        
+        @media screen and (max-width:426px) {
+            .box-card {
+                margin: 20% auto;
+                width: 100%;
+                height: 100%;
+            }
+            body {
+                background-image: url("images/Android-bg3.jpg");
+                background-size: 100vh;
+                opacity: 0.8;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+            .box input,
+            button,
+            .el-button {
+                width: 80px;
+            }
+            .box button:hover {
+                width: 90px;
+                /* transform: scale(1.1); */
+            }
+            .box input:hover {
+                width: 90px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <el-card class="box-card">
+                <div slot="header" class="clearfix">
+                    <h2>请登录</h2>
+                </div>
+                <div slot="header" class="clearfix" style="text-align: end;">
+                    <span><a href="login.html">注册</a></span>
+                </div>
+                <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100" class="demo-ruleForm">
+                    <el-form-item label="账号" prop="name">
+                        <br>
+                        <el-input v-model.number="ruleForm.name"></el-input>
+                    </el-form-item>
+                    <el-form-item label="密码" prop="pass">
+                        <br>
+                        <el-input type="password" v-model="ruleForm.pass" autocomplete="off"></el-input>
+                    </el-form-item>
+                    <div class="box">
+                        <el-form :inline="true">
+                            <input type="button" v-model="rad" @click="f1" style="color:black;"></input>
+                            <input type="text" placeholder="验证码" maxlength="4" v-model="yzm">
+                    </div>
+                    <el-form-item class="box">
+                        <el-button @click="resetForm('ruleForm')">清空</el-button>
+                        <el-button type="primary" @keyup.Enter="f3" @click="submitForm('ruleForm')">登录</el-button>
+                    </el-form-item>
+
+                    </el-form-item>
+                    </el-form>
+        </div>
+        </el-card>
+    </div>
+    </div>
+    <!-- 先导入vue在导入elementul -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data() {
+                var validatePass = (rule, value, callback) => {
+                    if (value === '') {
+                        callback(new Error('请输入密码'));
+                    } else {
+                        if (this.ruleForm.checkPass !== '') {
+                            this.$refs.ruleForm.validateField('checkPass');
+                        }
+                        callback();
+                    }
+                };
+                var validatePass2 = (rule, value, callback) => {
+                    if (value === '') {
+                        callback(new Error('请再次输入密码'));
+                    } else if (value !== this.ruleForm.pass) {
+                        callback(new Error('两次输入密码不一致!'));
+                    } else {
+                        callback();
+                    }
+                };
+                return {
+                    ruleForm: {
+                        name: '',
+                        pass: '',
+                        checkPass: '',
+                        yzm: '',
+                        rad: Math.random().toString(36).substr(2).slice(0, 4),
+
+                    },
+                    rad: Math.random().toString(36).substr(2).slice(0, 4),
+                    yzm: '',
+                    rules: {
+                        name: [{
+                            required: true,
+                            message: '请输入用户名',
+                            trigger: 'blur'
+                        }, {
+                            min: 3,
+                            max: 9,
+                            message: '请输入3-9个字母或中文',
+                            trigger: 'blur'
+                        }],
+                        pass: [{
+                            required: true,
+                            validator: validatePass,
+                            trigger: 'blur'
+                        }, {
+                            min: 3,
+                            max: 18,
+                            message: '请输入3-18个数字或字母',
+                            trigger: 'blur'
+                        }],
+                        checkPass: [{
+                            required: true,
+                            validator: validatePass2,
+                            trigger: 'blur'
+                        }],
+                        yzm: [{
+                            required: true,
+                            message: '请输入验证码',
+                            trigger: 'blur'
+                        }]
+                    }
+                };
+            },
+            methods: {
+                resetForm(formName) {
+                    this.$refs[formName].resetFields();
+                },
+                f1: function() {
+                    this.rad = Math.random().toString(36).substr(2).slice(0, 4)
+                },
+
+                submitForm(formName) {
+                    this.$refs[formName].validate((valid) => {
+                        if (this.valid != "" && this.yzm == "") {
+                            alert("请留意验证码是否输入")
+                        } else
+                        if (valid == this.rad == this.yzm) {
+                            // location.href = "index-1.html"
+                        } else if (this.rad == this.yzm == this.valid) {
+                            location.href = "login.html"
+                        } else if (this.rad !== this.yzm) {
+                            alert("验证码错误")
+                            this.rad = Math.random().toString(36).substr(2).slice(0, 4)
+                            this.yzm = ""
+                        } else if (this.rad == this.yzm == valid) {
+                            location.href = "index.html"
+                        } else {
+                            // console.log('error submit!!');
+                            alert("您未输入账号及密码！")
+                            return false;
+                        }
+                    })
+                    if (this.yzm == "") {
+                        // this.result = "请输入验证码"
+                        return
+                        alert("请输入验证码")
+                    } else if (this.rad == this.yzm == valid) {
+                        location.href = "login.html"
+                    }
+                },
+            },
+
+        })
+    </script>
+</body>
+
+</html>
